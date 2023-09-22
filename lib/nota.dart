@@ -1,13 +1,12 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:talk_and_text_editor/main.dart';
-import 'package:talk_and_text_editor/my_notes.dart';
-import 'package:talk_and_text_editor/registra.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Nota extends StatefulWidget {
-  const Nota({super.key});
+  final String? testo; //parametro che devo passare alle pagine che vengono qui
+  const Nota({Key? key, required this.testo}) : super(key: key);
 
   @override
   State<Nota> createState() => _NotaState();
@@ -15,10 +14,42 @@ class Nota extends StatefulWidget {
 
 class _NotaState extends State<Nota> {
   TextEditingController _noteController = TextEditingController();
+  List<String> _noteList = [];
 
-  void _salvaNota() {
+  @override
+  void initState() {
+    super.initState();
+    _noteController.text = widget.testo!;
+  }
+
+  void _salvaNota() async {
     String nota = _noteController.text;
-    // Aggiungi il codice per salvare la nota sulla memoria del cellulare
+
+    setState(() {
+      _noteList.add(nota); //aggiungo la nota alla lista delle note
+    });
+
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setStringList('listaNote', _noteList);
+
+    Fluttertoast.showToast(
+      msg: "Nota salvata",
+      toastLength: Toast.LENGTH_SHORT,
+      gravity: ToastGravity.CENTER,
+      timeInSecForIosWeb: 1,
+      backgroundColor: Colors.black87,
+      textColor: Colors.white,
+      fontSize: 16.0,
+    );
+
+    Timer(const Duration(seconds: 2), () {
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => const RootPage(),
+        ),
+      );
+    });
   }
 
   @override
@@ -49,17 +80,6 @@ class _NotaState extends State<Nota> {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         onPressed: () {
           _salvaNota();
-          Fluttertoast.showToast(
-              msg: "Nota salvata",
-              toastLength: Toast.LENGTH_SHORT,
-              gravity: ToastGravity.CENTER,
-              timeInSecForIosWeb: 1,
-              textColor: Colors.white,
-              fontSize: 16.0);
-
-          Timer(const Duration(seconds: 2), () {
-            Navigator.pop(context);
-          });
         },
         child: const Icon(Icons.check),
       ),

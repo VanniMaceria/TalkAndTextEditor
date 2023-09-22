@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:talk_and_text_editor/nota.dart';
 import 'info.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
@@ -22,7 +23,7 @@ class _RegistraState extends State<Registra> {
             _text = result.recognizedWords;
           });
         },
-        listenMode: stt.ListenMode.dictation, // Impostato il listenMode
+        listenMode: stt.ListenMode.dictation,
       );
     } else {
       print("Riconoscimento vocale non disponibile");
@@ -53,9 +54,13 @@ class _RegistraState extends State<Registra> {
             ),
             TextButton(
               onPressed: () {
-                // Salva la registrazione nella nota scritta
-                // (Aggiungi qui il codice per salvare la registrazione)
-                Navigator.of(context).pop(); // Chiudi l'alert
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    //quando vado nella pagina Nota passo anche il testo
+                    builder: (context) => Nota(testo: _text),
+                  ),
+                ); // Chiudi l'alert
               },
               child:
                   const Text("Si", style: TextStyle(color: Color(0xFF9d69a3))),
@@ -71,6 +76,7 @@ class _RegistraState extends State<Registra> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color(0xFF9d69a3),
+        automaticallyImplyLeading: false,
         title: const Text(
           "Talk and Text Editor",
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -102,7 +108,6 @@ class _RegistraState extends State<Registra> {
                 image: AssetImage("assets/img/voice_assistant_pana.png"),
               ),
               SingleChildScrollView(
-                // Aggiunto questo widget
                 scrollDirection: Axis.vertical,
                 child: Container(
                   padding: const EdgeInsets.all(10),
