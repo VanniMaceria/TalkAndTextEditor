@@ -1,16 +1,19 @@
 # talk_and_text_editor
 
-A new Flutter project.
+Mobile application for dictation and writing notes <br>
+>Developed using Dart and Flutter framework <br>
 
-## Getting Started
+## How to install
+```bash
+git clone https://github.com/VanniMaceria/TalkAndTextEditor.git
+```
 
-This project is a starting point for a Flutter application.
+Once you've downloaded the project, you will need this command to get all the dependencies in the pubspec.yaml <br>
 
-A few resources to get you started if this is your first Flutter project:
+```bash
+dart pub get
+```
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+**Work in progress**
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
