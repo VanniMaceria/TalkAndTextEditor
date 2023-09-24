@@ -83,7 +83,7 @@ class _MyNotesState extends State<MyNotes> {
               child: const Text(
                 "No",
                 style: TextStyle(
-                  color: Color(0xFF9d69a3),
+                  color: Color(0xFF225560),
                 ),
               ),
             ),
@@ -95,7 +95,7 @@ class _MyNotesState extends State<MyNotes> {
               child: const Text(
                 "Si",
                 style: TextStyle(
-                  color: Color(0xFF9d69a3),
+                  color: Color(0xFF225560),
                 ),
               ),
             ),
@@ -109,7 +109,7 @@ class _MyNotesState extends State<MyNotes> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF9d69a3),
+        backgroundColor: const Color(0xFF225560),
         automaticallyImplyLeading: false,
         title: const Text(
           "Le mie note",
@@ -185,7 +185,7 @@ class _MyNotesState extends State<MyNotes> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF9d69a3),
+        backgroundColor: const Color(0xFFF0803C),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         onPressed: () {
           Navigator.push(

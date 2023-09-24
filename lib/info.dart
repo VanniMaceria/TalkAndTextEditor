@@ -34,7 +34,7 @@ class _InfoState extends State<Info> {
             width: 40,
             height: 40,
             decoration: const BoxDecoration(
-              color: Color(0xFF9d69a3),
+              color: Color(0xFFF0803C),
               borderRadius: BorderRadius.all(
                 Radius.circular(5),
               ),
@@ -44,7 +44,7 @@ class _InfoState extends State<Info> {
                 toggleExpanded(index);
               },
               icon: Icon(isExpanded[index] ? Icons.remove : Icons.add),
-              color: const Color(0xFFedf6f9),
+              color: Colors.white,
             ),
           ),
         ),
@@ -58,7 +58,7 @@ class _InfoState extends State<Info> {
               child: Text(
                 sottoParagrafo,
                 style:
-                    const TextStyle(fontSize: 16.0, color: Color(0xFF9d69a3)),
+                    const TextStyle(fontSize: 16.0, color: Color(0xFF225560)),
               ),
             ),
           ),
@@ -76,7 +76,7 @@ class _InfoState extends State<Info> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF9d69a3),
+        backgroundColor: const Color(0xFF225560),
         title: const Text(
           "Informazioni",
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),

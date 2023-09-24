@@ -36,6 +36,7 @@ class RootPage extends StatefulWidget {
 
 class _RootPageState extends State<RootPage> {
   int currentPage = 0;
+  bool isRegistraActive = true;
   List<Widget> pages = const [
     Registra(),
     MyNotes()
@@ -47,16 +48,16 @@ class _RootPageState extends State<RootPage> {
       body: pages[currentPage],
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: const Color(0xFFF7F9F9),
-        items: const [
+        items: [
           BottomNavigationBarItem(
-            icon: Icon(
-              Icons.mic,
-            ),
+            icon: Icon(isRegistraActive ? Icons.mic : Icons.mic_none),
             label: "Registra",
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.library_books,
+              isRegistraActive
+                  ? Icons.library_books_outlined
+                  : Icons.library_books,
             ),
             label: "Le mie note",
           ),
@@ -64,11 +65,13 @@ class _RootPageState extends State<RootPage> {
         onTap: (int index) {
           setState(() {
             currentPage = index;
+            //se l'index è 0 allora mi trovo su Registra
+            isRegistraActive = index == 0;
           });
         },
         currentIndex: currentPage,
         selectedItemColor: const Color(
-            0xFF9d69a3), // Colore dell'icona della pagina selezionata
+            0xFF225560), // Colore dell'icona della pagina selezionata
         unselectedItemColor: Colors.black87, // Colore delle altre icone
       ),
     );

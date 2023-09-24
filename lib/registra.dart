@@ -70,7 +70,7 @@ class _RegistraState extends State<Registra> {
               },
               child: const Text(
                 "No",
-                style: TextStyle(color: Color(0xFF9d69a3)),
+                style: TextStyle(color: Color(0xFF225560)),
               ),
             ),
             TextButton(
@@ -100,7 +100,7 @@ class _RegistraState extends State<Registra> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color(0xFF9d69a3),
+        backgroundColor: const Color(0xFF225560),
         automaticallyImplyLeading: false,
         title: const Text(
           "Talk and Text Editor",
@@ -155,7 +155,7 @@ class _RegistraState extends State<Registra> {
                     child: ElevatedButton(
                       onPressed: _startListening,
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF9d69a3),
+                        backgroundColor: const Color(0xFF225560),
                         fixedSize: const Size(170, 100),
                       ),
                       child: const Text(

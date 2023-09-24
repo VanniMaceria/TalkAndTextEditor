@@ -83,7 +83,7 @@ class _NotaState extends State<Nota> {
     return Scaffold(
       backgroundColor: const Color(0xFFedf6f9),
       appBar: AppBar(
-        backgroundColor: const Color(0xFF9d69a3),
+        backgroundColor: const Color(0xFF225560),
         title: const Text(
           "Nota",
           style: TextStyle(fontWeight: FontWeight.bold),
@@ -102,7 +102,7 @@ class _NotaState extends State<Nota> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: const Color(0xFF9d69a3),
+        backgroundColor: const Color(0xFFF0803C),
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
         onPressed: () {
           _salvaNota();
