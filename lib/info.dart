@@ -25,7 +25,7 @@ class _InfoState extends State<Info> {
     return Column(
       children: <Widget>[
         ListTile(
-          tileColor: const Color(0xFFFCEFF9),
+          tileColor: const Color(0xFFedf6f9),
           title: Text(
             titolo,
             style: const TextStyle(color: Colors.black),
@@ -44,14 +44,14 @@ class _InfoState extends State<Info> {
                 toggleExpanded(index);
               },
               icon: Icon(isExpanded[index] ? Icons.remove : Icons.add),
-              color: Colors.white,
+              color: const Color(0xFFedf6f9),
             ),
           ),
         ),
         if (isExpanded[index])
           Container(
             width: double.infinity,
-            color: const Color(0xFFFCEFF9),
+            color: const Color(0xFFedf6f9),
             child: Padding(
               padding:
                   const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0),

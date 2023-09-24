@@ -25,7 +25,7 @@ class _RegistraState extends State<Registra> {
   void _caricaLista() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     _noteList = prefs.getStringList('listaNote');
-    print("Lista note: $_noteList");
+    //print("Lista note: $_noteList");
   }
 
   int restituisciAlmenoIndiceZero() {
@@ -66,7 +66,7 @@ class _RegistraState extends State<Registra> {
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).pop(); // Chiudi l'alert
+                Navigator.of(context).pop(); //Chiudi l'alert
               },
               child: const Text(
                 "No",
@@ -137,7 +137,7 @@ class _RegistraState extends State<Registra> {
                 child: Container(
                   padding: const EdgeInsets.all(10),
                   margin:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
                   width: double.infinity,
                   color: Colors.grey[200],
                   child: Text(

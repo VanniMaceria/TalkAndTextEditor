@@ -58,15 +58,13 @@ class _NotaState extends State<Nota> {
 
     //aggiorno la lista delle note
     await prefs.setStringList('listaNote', _noteList);
-    print("Note salvate: $_noteList");
+    //print("Note salvate: $_noteList");
 
     Fluttertoast.showToast(
       msg: "Nota salvata",
       toastLength: Toast.LENGTH_SHORT,
       gravity: ToastGravity.CENTER,
       timeInSecForIosWeb: 1,
-      backgroundColor: Colors.black87,
-      textColor: Colors.white,
       fontSize: 16.0,
     );
 
@@ -83,6 +81,7 @@ class _NotaState extends State<Nota> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(0xFFedf6f9),
       appBar: AppBar(
         backgroundColor: const Color(0xFF9d69a3),
         title: const Text(

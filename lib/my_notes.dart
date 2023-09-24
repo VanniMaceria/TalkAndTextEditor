@@ -48,8 +48,8 @@ class _MyNotesState extends State<MyNotes> {
   }
 
   String _troncaTesto(String text) {
-    if (text.length > 200) {
-      return "${text.substring(0, 200)} ...";
+    if (text.length > 80) {
+      return "${text.substring(0, 80)} ...";
     }
     return text;
   }
@@ -65,6 +65,43 @@ class _MyNotesState extends State<MyNotes> {
           index: index,
         ),
       ),
+    );
+  }
+
+  void _mostraDialogBox(int index) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: const Text("Attenzione"),
+          content: const Text("Vuoi eliminare la nota?"),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                Navigator.of(context).pop(); //Chiudi l'alert
+              },
+              child: const Text(
+                "No",
+                style: TextStyle(
+                  color: Color(0xFF9d69a3),
+                ),
+              ),
+            ),
+            TextButton(
+              onPressed: () {
+                _eliminaNota(index);
+                Navigator.pop(context); //Chiudi l'alert
+              },
+              child: const Text(
+                "Si",
+                style: TextStyle(
+                  color: Color(0xFF9d69a3),
+                ),
+              ),
+            ),
+          ],
+        );
+      },
     );
   }
 
@@ -97,35 +134,55 @@ class _MyNotesState extends State<MyNotes> {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          Expanded(
-            child: ListView.builder(
-              itemCount: _noteList.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Card(
-                  child: ListTile(
-                    title: Text(_troncaTesto(_noteList[index])),
-                    trailing: Container(
-                      child: IconButton(
-                          icon: const Icon(
-                            Icons.delete,
-                            color: Color(0xFFed1c24),
+      body: Padding(
+        padding: const EdgeInsets.only(top: 4.0, left: 4.0, right: 4.0),
+        child: Column(
+          children: [
+            Expanded(
+              //genera una griglia
+              child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  childAspectRatio:
+                      1.2, // Regola il rapporto tra altezza e larghezza delle card
+                ),
+                itemCount: _noteList.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return Card(
+                    color: const Color(0xFFedf6f9),
+                    child: Padding(
+                      padding: const EdgeInsets.all(2.0),
+                      child: Stack(
+                        children: [
+                          ListTile(
+                            title: Text(_troncaTesto(_noteList[index])),
+                            onTap: () {
+                              //è fondamentale che io passi a Nota il contenuto della nota e l'indice
+                              _navigateToNota(_noteList[index], index);
+                            },
                           ),
-                          onPressed: () {
-                            _eliminaNota(index);
-                          }),
+                          Positioned(
+                            bottom: 0.0,
+                            right: -2.0,
+                            child: IconButton(
+                              icon: const Icon(
+                                Icons.delete,
+                                color: Color(0xFFed1c24),
+                              ),
+                              onPressed: () {
+                                _mostraDialogBox(index);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
-                    onTap: () {
-                      //è fondamentale che io passsi a Nota il contenuto della nota e l'indice
-                      _navigateToNota(_noteList[index], index);
-                    },
-                  ),
-                );
-              },
+                  );
+                },
+              ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: const Color(0xFF9d69a3),
