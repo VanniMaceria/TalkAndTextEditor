@@ -5,8 +5,15 @@ import 'package:talk_and_text_editor/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Nota extends StatefulWidget {
-  final String? testo; //parametro che devo passare alle pagine che vengono qui
-  const Nota({Key? key, required this.testo}) : super(key: key);
+  final String? testo;
+  final bool isNewNote;
+  final int index;
+  const Nota(
+      {Key? key,
+      required this.testo,
+      required this.isNewNote,
+      required this.index})
+      : super(key: key);
 
   @override
   State<Nota> createState() => _NotaState();
@@ -24,13 +31,34 @@ class _NotaState extends State<Nota> {
 
   void _salvaNota() async {
     String nota = _noteController.text;
-
-    setState(() {
-      _noteList.add(nota); //aggiungo la nota alla lista delle note
-    });
-
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    List<String>? existingNotes = prefs.getStringList('listaNote');
+    int index = widget.index;
+
+    print("Indice nota: $index");
+
+    if (existingNotes != null) {
+      if (widget.isNewNote) {
+        setState(() {
+          _noteList = existingNotes;
+          _noteList.add(nota);
+        });
+      } else {
+        _noteList.clear();
+        _noteList.addAll(existingNotes);
+        // Sovrascrivo il testo della nota esistente
+        _noteList[index] = nota;
+      }
+    } else {
+      //se la lista è vuota sarà composta solo da questa prima nota
+      setState(() {
+        _noteList = [nota];
+      });
+    }
+
+    //aggiorno la lista delle note
     await prefs.setStringList('listaNote', _noteList);
+    print("Note salvate: $_noteList");
 
     Fluttertoast.showToast(
       msg: "Nota salvata",
@@ -42,7 +70,7 @@ class _NotaState extends State<Nota> {
       fontSize: 16.0,
     );
 
-    Timer(const Duration(seconds: 2), () {
+    Timer(const Duration(seconds: 1), () {
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(
@@ -66,9 +94,8 @@ class _NotaState extends State<Nota> {
         padding: const EdgeInsets.all(16.0),
         child: TextField(
           controller: _noteController,
-          maxLines: null, // Permette più righe di testo
-          expands:
-              true, // Espande il TextField per riempire lo spazio disponibile
+          maxLines: null,
+          expands: true,
           decoration: const InputDecoration(
             border: InputBorder.none,
             hintText: 'Scrivi la tua nota qui...',

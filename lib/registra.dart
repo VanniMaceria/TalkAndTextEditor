@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:talk_and_text_editor/nota.dart';
 import 'info.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
@@ -13,6 +14,26 @@ class Registra extends StatefulWidget {
 class _RegistraState extends State<Registra> {
   final stt.SpeechToText _speech = stt.SpeechToText();
   String _text = "";
+  List<String>? _noteList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    _caricaLista();
+  }
+
+  void _caricaLista() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _noteList = prefs.getStringList('listaNote');
+    print("Lista note: $_noteList");
+  }
+
+  int restituisciAlmenoIndiceZero() {
+    if (_noteList == null || _noteList!.isEmpty) {
+      return 0; //passo l'indice 0 che coincide con l'inizio della lista
+    }
+    return _noteList!.length - 1;
+  }
 
   void _startListening() async {
     bool available = await _speech.initialize();
@@ -58,7 +79,11 @@ class _RegistraState extends State<Registra> {
                   context,
                   MaterialPageRoute(
                     //quando vado nella pagina Nota passo anche il testo
-                    builder: (context) => Nota(testo: _text),
+                    builder: (context) => Nota(
+                      testo: _text,
+                      isNewNote: true,
+                      index: restituisciAlmenoIndiceZero(),
+                    ),
                   ),
                 ); // Chiudi l'alert
               },
