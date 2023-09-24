@@ -14,6 +14,6 @@ Once you've downloaded the project, you will need this command to get all the de
 dart pub get
 ```
 
-**Work in progress**
+**Hope you enjoy it :)**
 
 
