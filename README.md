@@ -8,7 +8,7 @@ Mobile application for dictation and writing notes <br>
 git clone https://github.com/VanniMaceria/TalkAndTextEditor.git
 ```
 
-Once you've downloaded the project, you will need this command to get all the dependencies in the pubspec.yaml <br>
+Once you have downloaded the project, you will need this command to get all the dependencies in the pubspec.yaml <br>
 
 ```bash
 dart pub get
