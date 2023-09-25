@@ -29,9 +29,11 @@ class _RegistraState extends State<Registra> {
   }
 
   int restituisciAlmenoIndiceZero() {
+    //se la lista è vuota...
     if (_noteList == null || _noteList!.isEmpty) {
       return 0; //passo l'indice 0 che coincide con l'inizio della lista
     }
+    //altrimenti la lista non è vuota e l'indice della nota sarà la sua lunghezza -1
     return _noteList!.length - 1;
   }
 
@@ -70,7 +72,7 @@ class _RegistraState extends State<Registra> {
               },
               child: const Text(
                 "No",
-                style: TextStyle(color: Color(0xFF225560)),
+                style: TextStyle(color: Color(0xFF225560), fontSize: 20),
               ),
             ),
             TextButton(
@@ -78,7 +80,7 @@ class _RegistraState extends State<Registra> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    //quando vado nella pagina Nota passo anche il testo
+                    //quando vado nella pagina Nota passo il testo, bool e index
                     builder: (context) => Nota(
                       testo: _text,
                       isNewNote: true,
@@ -87,8 +89,10 @@ class _RegistraState extends State<Registra> {
                   ),
                 ); // Chiudi l'alert
               },
-              child:
-                  const Text("Si", style: TextStyle(color: Color(0xFF9d69a3))),
+              child: const Text(
+                "Si",
+                style: TextStyle(color: Color(0xFF225560), fontSize: 20),
+              ),
             ),
           ],
         );

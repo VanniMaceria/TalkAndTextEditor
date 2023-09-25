@@ -82,9 +82,7 @@ class _MyNotesState extends State<MyNotes> {
               },
               child: const Text(
                 "No",
-                style: TextStyle(
-                  color: Color(0xFF225560),
-                ),
+                style: TextStyle(color: Color(0xFF225560), fontSize: 20),
               ),
             ),
             TextButton(
@@ -94,9 +92,7 @@ class _MyNotesState extends State<MyNotes> {
               },
               child: const Text(
                 "Si",
-                style: TextStyle(
-                  color: Color(0xFF225560),
-                ),
+                style: TextStyle(color: Color(0xFF225560), fontSize: 20),
               ),
             ),
           ],

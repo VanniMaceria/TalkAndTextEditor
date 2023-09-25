@@ -12,7 +12,7 @@ class _InfoState extends State<Info> {
   List<String> titoli = ["Crediti artistici", "Sviluppo"];
   List<String> testiAggiuntivi = [
     "Illustrazioni di Storyset da @freepikcompany",
-    "L'applicazione è stata realizzata usando il linguaggio di programmazione Dart ed il framework Flutter\n\n@OrangeHillStudio"
+    "L'applicazione è stata realizzata usando il linguaggio di programmazione Dart ed il framework Flutter"
   ];
 
   void toggleExpanded(int index) {
