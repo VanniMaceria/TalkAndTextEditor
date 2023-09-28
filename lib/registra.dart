@@ -162,10 +162,13 @@ class _RegistraState extends State<Registra> {
                         backgroundColor: const Color(0xFF225560),
                         fixedSize: const Size(170, 100),
                       ),
-                      child: const Text(
-                        "Avvia registrazione",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(fontSize: 24),
+                      child: const FittedBox(
+                        //ridimensiona il testo in base alle dimensioni del pulsante
+                        child: Text(
+                          "Avvia registrazione",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 24),
+                        ),
                       ),
                     ),
                   ),
@@ -181,11 +184,13 @@ class _RegistraState extends State<Registra> {
                           backgroundColor: Colors.white,
                           fixedSize: const Size(170, 100),
                           side: const BorderSide(color: Color(0xFFed1c24))),
-                      child: const Text(
-                        "Arresta registrazione",
-                        textAlign: TextAlign.center,
-                        style:
-                            TextStyle(fontSize: 24, color: Color(0xFFed1c24)),
+                      child: const FittedBox(
+                        child: Text(
+                          "Arresta registrazione",
+                          textAlign: TextAlign.center,
+                          style:
+                              TextStyle(fontSize: 24, color: Color(0xFFed1c24)),
+                        ),
                       ),
                     ),
                   ),
