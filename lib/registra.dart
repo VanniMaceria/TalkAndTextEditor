@@ -150,18 +150,20 @@ class _RegistraState extends State<Registra> {
                   ),
                 ),
               ),
-              Row(
+              Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
+                    width: double.infinity,
                     margin: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                        vertical: 10, horizontal: 20),
                     child: ElevatedButton(
-                      onPressed: _startListening,
+                      onPressed: () {
+                        _startListening();
+                      },
                       style: ElevatedButton.styleFrom(
-                        backgroundColor: const Color(0xFF225560),
-                        fixedSize: const Size(170, 100),
-                      ),
+                          backgroundColor: const Color(0xFF225560),
+                          fixedSize: const Size(double.infinity, 50)),
                       child: const FittedBox(
                         //ridimensiona il testo in base alle dimensioni del pulsante
                         child: Text(
@@ -173,8 +175,9 @@ class _RegistraState extends State<Registra> {
                     ),
                   ),
                   Container(
+                    width: double.infinity,
                     margin: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 10),
+                        vertical: 10, horizontal: 20),
                     child: ElevatedButton(
                       onPressed: () {
                         _stopListening();
@@ -182,7 +185,7 @@ class _RegistraState extends State<Registra> {
                       },
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.white,
-                          fixedSize: const Size(170, 100),
+                          fixedSize: const Size(double.infinity, 50),
                           side: const BorderSide(color: Color(0xFFed1c24))),
                       child: const FittedBox(
                         child: Text(

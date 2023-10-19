@@ -43,7 +43,9 @@ class _InfoState extends State<Info> {
               onPressed: () {
                 toggleExpanded(index);
               },
-              icon: Icon(isExpanded[index] ? Icons.remove : Icons.add),
+              icon: Icon(isExpanded[index]
+                  ? Icons.keyboard_arrow_up
+                  : Icons.keyboard_arrow_down),
               color: Colors.white,
             ),
           ),
