@@ -15,7 +15,7 @@ dart pub get
 ```
 
 ## How to install the app
-You can download the app directly by clicking [here](https://github.com/VanniMaceria/TalkAndTextEditor/raw/master/TTE_apk.apk) <br><br>
+You can download the app directly by clicking [here](https://github.com/VanniMaceria/TalkAndTextEditor/raw/master/app-armeabi-v7a-release.apk) <br><br>
 
 
 **Hope you enjoy it :)**
